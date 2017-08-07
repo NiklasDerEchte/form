@@ -12,7 +12,7 @@ $form->setSubmit("Submit", "send");
 
 $form->setData(@$_POST);
 
-$form->onSubmit( "senden",
+$form->onSubmit( "send",
         function ($fdata) {
             echo "DATA SEND";
         }
