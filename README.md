@@ -23,7 +23,7 @@ echo $form->render();
 
 ## Install
 
-Niklas/Form ist available at packagist.org.
+Niklas/Form is available at packagist.org.
 
 insall it using composer: 
 
