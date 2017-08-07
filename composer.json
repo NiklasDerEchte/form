@@ -1,0 +1,21 @@
+{
+    "name": "niklas/form",
+    "description": "Data access object",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "niklas",
+            "email": "Niklas.Wockenfuss@continue.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Niklas\\Form\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "nette/tester": "^1.7"
+    }
+}
