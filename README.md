@@ -5,16 +5,16 @@ Render bootstrap 3.2 html forms
 
 ```php
 $form = new ActionForm(null, "POST");
-$form->addInput("name", "Name")->required("Bitte Name angeben!");
-$form->addInput("email", "Email", "email")->required("Bitte eine gültige Email angeben!");
-$form->addInput("pass", "Passwort", "password")->required("Bitte Passwort eingeben!");
-$form->setSubmit("Absenden", "senden");
+$form->addInput("name", "Name")->required("Please enter a name!");
+$form->addInput("email", "Email", "email")->required("Please enter a valid email!");
+$form->addInput("pass", "Password", "password")->required("Please enter a password!");
+$form->setSubmit("Submit", "send");
 
 $form->setData(@$_POST);
 
 $form->onSubmit( "senden",
         function ($fdata) {
-            echo "DATEN GESENDET!";
+            echo "DATA SEND";
         }
 );
 
