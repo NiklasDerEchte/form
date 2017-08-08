@@ -152,7 +152,7 @@ class Form
             $line = "";
             foreach ($index as $key => $value) {
                 if($key === "text") {
-                    $line .= "<div class='form-group'><label for='" . htmlspecialchars("$item") . "' class='col-lg-2 control-label'>" . htmlspecialchars($value) . "</label><div class='col-lg-10'><select class='form-control' id='" . htmlspecialchars("$item") . "'>";
+                    $line .= "<div class='form-group'><label for='" . htmlspecialchars("$item") . "' class='col-lg-2 control-label'>$value</label><div class='col-lg-10'><select class='form-control' id='" . htmlspecialchars("$item") . "'>";
                     continue;
                 }
                 $line .= "<option>" . htmlspecialchars("$value") . "</option>";
@@ -168,7 +168,7 @@ class Form
                     $line .= "<div class='form-group'><label class='col-lg-2 control-label'>" . htmlspecialchars($value) . "</label><div class='col-lg-10'>";
                     continue;
                 }
-                $line .= "<div class='radio'><label><input type=" . htmlspecialchars("radio") . " name=" . htmlspecialchars($item) . " value=" . htmlspecialchars($key) . ">" . htmlspecialchars($value) . "</label></div>";
+                $line .= "<div class='radio'><label><input type=" . htmlspecialchars("radio") . " name=" . htmlspecialchars($item) . " value=" . htmlspecialchars($key) . ">$value</label></div>";
             }
             $line .= "</div></div>";
             $this->mStructure[] = $line;
