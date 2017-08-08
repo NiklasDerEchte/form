@@ -98,7 +98,7 @@ class Form
     }
 
     public function render() {
-        $this->mStructure[] = "<div class='well bs-component'><form class='form-horizontal' method='{$this->mMethod}'>";
+        $this->mStructure[] = "<div class='well bs-component'><form class='form-horizontal' method='{$this->mMethod}'><fieldset>";
         foreach ($this->mRowData as $key => $value) {
             if(array_key_exists($key, $this->mError)) {
 
@@ -195,7 +195,7 @@ class Form
             $this->mStructure[] = $line;
         }
 
-        $this->mStructure[] = "</div></form>";
+        $this->mStructure[] = "</div></fieldset></form>";
         $finalForm = "";
         foreach($this->mStructure as $key) {
             $finalForm .= $key;
