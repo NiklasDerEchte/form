@@ -32,6 +32,12 @@ require __DIR__ . "/../vendor/autoload.php";
 
         $form->setSubmit("Absenden", "senden");
 
+        $form->addRadio("rad", ["1"=>"Im Haus","2"=>"sonst was","3"=>"nochwas"],"Das sind radios");
+
+        $form->addCheckbox("rad", ["1"=>"Im Haus","2"=>"sonst was","3"=>"nochwas"],"Das sind radios");
+
+        $form->addSelect("select", ["1"=>"Erster Text", "2"=>"Zweiter Text", "3"=>"Dritter Text"], "Das ist eine Selectbox!");
+
         $form->setData(@$_POST);
         
         $form->onSubmit( "senden",

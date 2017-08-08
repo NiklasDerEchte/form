@@ -18,7 +18,9 @@ class Form
     private $mData = [];
     private $mStructure;
     private $mTypes = [];
-
+    private $mRadio = [];
+    private $mCheckBox = [];
+    private $mSelect = [];
     /**
      * @var FormValidator[]
      */
@@ -66,6 +68,33 @@ class Form
 
     public function setError($inputName, $errorMsg) {
         $this->mError[$inputName] = $errorMsg;
+    }
+
+    public function addSelect($id, array $options, $text) {
+        $tempAr = [];
+        $tempAr["text"] = $text;
+        foreach ($options as $key => $value) {
+            $tempAr[$key] = $value;
+        }
+        $this->mSelect[$id] = $tempAr;
+    }
+
+    public function addRadio($inputName, array $values, $text) {
+        $tempAr = [];
+        $tempAr["text"] = $text;
+        foreach ($values as $key => $value) {
+            $tempAr[$key] = $value;
+        }
+        $this->mRadio[$inputName] = $tempAr;
+    }
+
+    public function addCheckbox($inputName,array $values , $text) {
+        $tempAr = [];
+        $tempAr["text"] = $text;
+        foreach ($values as $key => $value) {
+            $tempAr[$key] = $value;
+        }
+        $this->mCheckBox[$inputName] = $tempAr;
     }
 
     public function render() {
@@ -118,6 +147,49 @@ class Form
             $line .= "</div></div>";
             $this->mStructure[] = $line;
         }
+
+        foreach ($this->mSelect as $item => $index) {
+            $line = "";
+            foreach ($index as $key => $value) {
+                if($key === "text") {
+                    $line .= "<div class='form-group'><label for='" . htmlspecialchars("$item") . "' class='col-lg-2 control-label'>" . htmlspecialchars($value) . "</label><div class='col-lg-10'><select class='form-control' id='" . htmlspecialchars("$item") . "'>";
+                    continue;
+                }
+                $line .= "<option>" . htmlspecialchars("$value") . "</option>";
+            }
+            $line .= "</select></div></div>";
+            $this->mStructure[] = $line;
+        }
+
+        foreach ($this->mRadio as $item => $index) {
+            $line = "";
+            foreach ($index as $key => $value) {
+                if($key === "text") {
+                    $line .= "<div class='form-group'><label class='col-lg-2 control-label'>" . htmlspecialchars($value) . "</label><div class='col-lg-10'>";
+                    continue;
+                }
+                $line .= "<div class='radio'><label><input type=" . htmlspecialchars("radio") . " name=" . htmlspecialchars($item) . " value=" . htmlspecialchars($key) . ">" . htmlspecialchars($value) . "</label></div>";
+            }
+            $line .= "</div></div>";
+            $this->mStructure[] = $line;
+        }
+
+        foreach ($this->mCheckBox as $item => $index) {
+            $line = "";
+            foreach ($index as $key => $value) {
+                if($key === "text") {
+                    $line .= "<div class='form-group'><label class='col-lg-2 control-label'>" . htmlspecialchars($value) . "</label><div class='col-lg-10'>";
+                    continue;
+                }
+                $line .= "<div class='checkbox'><label><input type=" . htmlspecialchars("checkbox") . " name=" . htmlspecialchars($item) . " value=" . htmlspecialchars($key) . ">" . htmlspecialchars($value) . "</label></div>";
+            }
+            $line .= "</div></div>";
+            $this->mStructure[] = $line;
+        }
+
+
+
+
         foreach ($this->mSubmit as $key => $value) {
             $line = "<div class='form-group'><div class='col-sm-offset-2 col-sm-10'><button type='submit' name='" . htmlspecialchars($key) . "' class='btn btn-default'>" . htmlspecialchars($value) . "</button></div></div>";
             $this->mStructure[] = $line;
