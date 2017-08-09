@@ -80,10 +80,11 @@ class Form
         $this->mSelect[$id] = $tempAr;
     }
 
-    public function addRadio($inputName, array $values, $text, $checked = 0) {
-        if($checked === 1) {
-            $this->mCheckedRadio = $inputName;
-        }
+    public function radioDefaultChecked($inputName){
+        $this->mCheckedRadio = $inputName;
+    }
+
+    public function addRadio($inputName, array $values, $text) {
         $tempAr = [];
         $tempAr["text"] = $text;
         foreach ($values as $key => $value) {
