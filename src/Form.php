@@ -21,6 +21,7 @@ class Form
     private $mRadio = [];
     private $mCheckBox = [];
     private $mSelect = [];
+    private $mCheckedRadio;
     /**
      * @var FormValidator[]
      */
@@ -79,7 +80,10 @@ class Form
         $this->mSelect[$id] = $tempAr;
     }
 
-    public function addRadio($inputName, array $values, $text) {
+    public function addRadio($inputName, array $values, $text, $checked = 0) {
+        if($checked === 1) {
+            $this->mCheckedRadio = $inputName;
+        }
         $tempAr = [];
         $tempAr["text"] = $text;
         foreach ($values as $key => $value) {
@@ -166,6 +170,10 @@ class Form
             foreach ($index as $key => $value) {
                 if($key === "text") {
                     $line .= "<div class='form-group'><label class='col-sm-2 control-label'>" . htmlspecialchars($value) . "</label><div class='col-sm-10'>";
+                    continue;
+                }
+                if($this->mCheckedRadio === $index) {
+                    $line .= "<div class='radio'><label><input type=" . htmlspecialchars("radio") . " name=" . htmlspecialchars($item) . " checked='checked' value=" . htmlspecialchars($key) . ">$value</label></div>";
                     continue;
                 }
                 $line .= "<div class='radio'><label><input type=" . htmlspecialchars("radio") . " name=" . htmlspecialchars($item) . " value=" . htmlspecialchars($key) . ">$value</label></div>";
