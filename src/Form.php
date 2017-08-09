@@ -157,7 +157,7 @@ class Form
             $line = "";
             foreach ($index as $key => $value) {
                 if($key === "text") {
-                    $line .= "<div class='form-group'><label for='" . htmlspecialchars("$item") . "' class='col-sm-2 control-label'>$value</label><div class='col-sm-10'><select class='form-control' id='" . htmlspecialchars("$item") . "'>";
+                    $line .= "<div class='form-group'><label for='" . htmlspecialchars("$item") . "' class='col-sm-2 control-label'>$value</label><div class='col-sm-10'><select class='form-control' id='" . htmlspecialchars("$item") . "' name='" . htmlspecialchars("$item") . "'>";
                     continue;
                 }
                 $line .= "<option>" . htmlspecialchars("$value") . "</option>";
