@@ -173,7 +173,8 @@ class Form
                     $line .= "<div class='form-group'><label class='col-sm-2 control-label'>" . htmlspecialchars($value) . "</label><div class='col-sm-10'>";
                     continue;
                 }
-                if($this->mCheckedRadio === $index) {
+                if($this->mCheckedRadio == $key) {
+                    echo "test";
                     $line .= "<div class='radio'><label><input type=" . htmlspecialchars("radio") . " name=" . htmlspecialchars($item) . " checked='checked' value=" . htmlspecialchars($key) . ">$value</label></div>";
                     continue;
                 }
