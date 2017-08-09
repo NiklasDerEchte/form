@@ -174,7 +174,6 @@ class Form
                     continue;
                 }
                 if($this->mCheckedRadio == $key) {
-                    echo "test";
                     $line .= "<div class='radio'><label><input type=" . htmlspecialchars("radio") . " name=" . htmlspecialchars($item) . " checked='checked' value=" . htmlspecialchars($key) . ">$value</label></div>";
                     continue;
                 }
