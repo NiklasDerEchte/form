@@ -12,6 +12,7 @@ class Form
 {
     public $mMethod;
     private $mAction;
+    private $mGlobalMsg = [];
     public $mRowData = [];
     public $mSubmit = [];
     private $mError = [];
@@ -65,6 +66,16 @@ class Form
         foreach ($input as $key => $value) {
             $this->mData[$key] = $input[$key];
         }
+    }
+
+    public function setGlobalWarning($msg) {
+        $alert = ['warning'] = $msg;
+        $this->mGlobalMsg[] = $alert;
+    }
+
+    public function setGlobalSuccess($msg) {
+        $alert = ['success'] = $msg;
+        $this->mGlobalMsg[] = $alert;
     }
 
     public function setError($inputName, $errorMsg) {
@@ -151,6 +162,26 @@ class Form
             }
             $line .= "</div></div>";
             $this->mStructure[] = $line;
+        }
+
+        foreach($this->mGlobalMsg as $item => $index) {
+            foreach ($index as $key => $value) {
+                if($key == 'warning') {
+                    ?>
+                    <div class="alert alert-dismissible alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <p><?php echo $value; ?></p>
+                    </div>
+                    <?php
+                } else if($key == 'success') {
+                    ?>
+                    <div class="alert alert-dismissible alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <p><?php echo $value; ?></p>
+                    </div>
+                    <?php
+                }
+            }
         }
 
         foreach ($this->mSelect as $item => $index) {
