@@ -69,7 +69,7 @@ class Form
     }
 
     public function setGlobalWarning($msg) {
-        $alert = ['warning'] = $msg;
+        $alert['warning'] = $msg;
         $this->mGlobalMsg[] = $alert;
     }
 
