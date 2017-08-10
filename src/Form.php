@@ -74,7 +74,7 @@ class Form
     }
 
     public function setGlobalSuccess($msg) {
-        $alert = ['success'] = $msg;
+        $alert['success'] = $msg;
         $this->mGlobalMsg[] = $alert;
     }
 
