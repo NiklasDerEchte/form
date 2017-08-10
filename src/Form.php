@@ -168,7 +168,7 @@ class Form
             foreach ($index as $key => $value) {
                 if($key == 'warning') {
                     ?>
-                    <div class="alert alert-dismissible alert-warning">
+                    <div class="alert alert-dismissible alert-danger">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <p><?php echo $value; ?></p>
                     </div>
